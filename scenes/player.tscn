@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chsviinyt5gaj"]
+
+[ext_resource type="Script" uid="uid://cdt6nstxv2s7f" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://cfxdjjtx4h20" path="res://assets/player/platform.png" id="2_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(20, 80)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_3vyb7")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="Rocket" type="Sprite2D" parent="PlayerArea"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_g2els")
+
+[node name="RocketCollision" type="CollisionShape2D" parent="PlayerArea"]
+shape = SubResource("RectangleShape2D_g2els")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx3q3gg3eqrw3"]
+
+[ext_resource type="Texture2D" uid="uid://t6prow3i2vax" path="res://assets/ball/the-ball-is-round-yellow-sun-pictures-2.png" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://da0kjoowjlcpi" path="res://scripts/ball_area.gd" id="1_cxlvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s4qf"]
+radius = 12.0
+
+[node name="Ball" type="Node2D"]
+
+[node name="BallArea" type="Area2D" parent="."]
+script = ExtResource("1_cxlvu")
+
+[node name="BallSprite" type="Sprite2D" parent="BallArea"]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_7s4qf")
+
+[node name="CollisionBall" type="CollisionShape2D" parent="BallArea"]
+shape = SubResource("CircleShape2D_7s4qf")
+
+[connection signal="area_entered" from="BallArea" to="BallArea" method="_on_area_entered"]
