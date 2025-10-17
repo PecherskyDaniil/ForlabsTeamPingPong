@@ -1,42 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://civvptuunex5f"]
+[gd_scene load_steps=4 format=3 uid="uid://civvptuunex5f"]
 
+[ext_resource type="Script" uid="uid://ckeoqky2irare" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://u2xox70adk6p" path="res://assets/interface/main_menu_background.png" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://c34r6l05b1fag" path="res://scripts/play_button.gd" id="2_ekxnf"]
-[ext_resource type="Script" uid="uid://dcnbxmyphy3y8" path="res://scripts/settings_button.gd" id="3_bqqt6"]
-[ext_resource type="Script" uid="uid://b5lxko3in2p2g" path="res://scripts/exit_button.gd" id="4_wu84c"]
+[ext_resource type="PackedScene" uid="uid://dsbnixeflcqyu" path="res://scenes/settings.tscn" id="3_bqqt6"]
 
 [node name="main_menu" type="Node2D"]
+script = ExtResource("1_ekxnf")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(580, 324)
 scale = Vector2(1.49, 1.24286)
 texture = ExtResource("1_l6cm7")
 
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 488.0
-offset_top = 192.0
-offset_right = 656.0
-offset_bottom = 248.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 768.0
+offset_bottom = 512.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Play"
-script = ExtResource("2_ekxnf")
 
-[node name="SettingsButton" type="Button" parent="."]
-offset_left = 488.0
-offset_top = 280.0
-offset_right = 656.0
-offset_bottom = 336.0
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Settings"
-script = ExtResource("3_bqqt6")
 
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 488.0
-offset_top = 376.0
-offset_right = 656.0
-offset_bottom = 432.0
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Exit"
-script = ExtResource("4_wu84c")
 
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
-[connection signal="pressed" from="SettingsButton" to="PlayButton" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="SettingsButton" method="_on_pressed"]
-[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
+[node name="settings" parent="." instance=ExtResource("3_bqqt6")]
+visible = false
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="exit_settings_menu" from="settings" to="." method="_on_settings_exit_settings_menu"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://o7p8m5lhxhmm"]
 
-[ext_resource type="Script" uid="uid://d01s0cep4uth2" path="res://scenes/oponent.gd" id="1_8m4lj"]
+[ext_resource type="Script" uid="uid://d01s0cep4uth2" path="res://scripts/oponent.gd" id="1_8m4lj"]
 [ext_resource type="Texture2D" uid="uid://dny05k7tvg2n3" path="res://assets/oponent/oponent.png" id="1_ybdjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybdjb"]
