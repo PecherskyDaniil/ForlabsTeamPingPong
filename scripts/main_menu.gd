@@ -1,7 +1,6 @@
 extends Node2D
 
-@onready var play_button=$PlayButton
-@onready var exit_button=$ExitButton
+
 @onready var playground=preload("res://scenes/playground.tscn")
 @onready var settings=$settings
 @onready var main_menu=$MarginContainer
