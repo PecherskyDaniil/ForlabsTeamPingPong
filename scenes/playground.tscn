@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crgkqrudc358o"]
+[gd_scene load_steps=8 format=3 uid="uid://crgkqrudc358o"]
 
 [ext_resource type="Texture2D" uid="uid://u2xox70adk6p" path="res://assets/interface/main_menu_background.png" id="1_hddm4"]
 [ext_resource type="Script" uid="uid://m5j442vsx0wn" path="res://scripts/playground.gd" id="1_q8s1k"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chsviinyt5gaj" path="res://scenes/player.tscn" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://o7p8m5lhxhmm" path="res://scenes/oponent.tscn" id="5_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://2memjss351st" path="res://scenes/pause.tscn" id="6_o6wi6"]
+[ext_resource type="PackedScene" uid="uid://c8sxux6c2j3ia" path="res://results.tscn" id="7_emj6c"]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_q8s1k")
@@ -25,15 +26,9 @@ position = Vector2(160, 320)
 position = Vector2(992, 320)
 
 [node name="PlayerPoints" type="Label" parent="."]
-offset_left = 472.0
+offset_left = 560.0
 offset_top = 24.0
-offset_right = 512.0
-offset_bottom = 47.0
-
-[node name="OpPoints" type="Label" parent="."]
-offset_left = 640.0
-offset_top = 24.0
-offset_right = 680.0
+offset_right = 600.0
 offset_bottom = 47.0
 
 [node name="DifficultyLabel" type="Label" parent="."]
@@ -51,6 +46,18 @@ offset_bottom = 640.0
 text = "Pause"
 
 [node name="pause" parent="." instance=ExtResource("6_o6wi6")]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 24.0
+offset_right = 464.0
+offset_bottom = 47.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Results" parent="." instance=ExtResource("7_emj6c")]
 visible = false
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

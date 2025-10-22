@@ -9,6 +9,7 @@ var velocity = 0.0
 func _process(delta:float)->void:
 	var direction = Input.get_axis("ui_up","ui_down")
 	velocity = direction*SPEED
+	#Ограничение движения игрока
 	if (global_position.y+velocity*delta-size.y/2)>0 and (global_position.y+velocity*delta+size.y/2)<window.size.y:
 		position.y+=velocity*delta
 	
