@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8sxux6c2j3ia"]
+
+[ext_resource type="Script" uid="uid://cwbij3unhlgvy" path="res://scripts/results.gd" id="1_amp1b"]
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_amp1b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.188235, 0.188235, 0.188235, 0.529412)
+layout_mode = 0
+offset_right = 1448.0
+offset_bottom = 896.0
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 136.0
+offset_right = 1148.0
+offset_bottom = 620.0
+
+[node name="BackToMenu" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 684.0
+offset_top = 668.0
+offset_right = 799.0
+offset_bottom = 699.0
+text = "Back to menu"
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

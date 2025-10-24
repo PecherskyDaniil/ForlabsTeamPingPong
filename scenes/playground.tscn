@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://crgkqrudc358o"]
+
+[ext_resource type="Texture2D" uid="uid://u2xox70adk6p" path="res://assets/interface/main_menu_background.png" id="1_hddm4"]
+[ext_resource type="Script" uid="uid://m5j442vsx0wn" path="res://scripts/playground.gd" id="1_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://cx3q3gg3eqrw3" path="res://scenes/ball.tscn" id="2_kddj0"]
+[ext_resource type="PackedScene" uid="uid://chsviinyt5gaj" path="res://scenes/player.tscn" id="3_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://o7p8m5lhxhmm" path="res://scenes/oponent.tscn" id="5_mm0a5"]
+[ext_resource type="PackedScene" uid="uid://2memjss351st" path="res://scenes/pause.tscn" id="6_o6wi6"]
+[ext_resource type="PackedScene" uid="uid://c8sxux6c2j3ia" path="res://scenes/results.tscn" id="7_emj6c"]
+
+[node name="Playground" type="Node2D"]
+script = ExtResource("1_q8s1k")
+
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(720, 452)
+scale = Vector2(1.8, 1.61428)
+texture = ExtResource("1_hddm4")
+
+[node name="Ball" parent="." instance=ExtResource("2_kddj0")]
+position = Vector2(720, 450)
+
+[node name="Player" parent="." instance=ExtResource("3_q8s1k")]
+position = Vector2(128, 456)
+
+[node name="Oponent" parent="." instance=ExtResource("5_mm0a5")]
+position = Vector2(1312, 448)
+
+[node name="PlayerPoints" type="Label" parent="."]
+offset_left = 696.0
+offset_top = 120.0
+offset_right = 736.0
+offset_bottom = 143.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DifficultyLabel" type="Label" parent="."]
+offset_left = 680.0
+offset_top = 72.0
+offset_right = 760.0
+offset_bottom = 104.0
+text = "Difficulty:"
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 664.0
+offset_top = 832.0
+offset_right = 784.0
+offset_bottom = 888.0
+text = "Pause"
+metadata/_edit_use_anchors_ = true
+
+[node name="pause" parent="." instance=ExtResource("6_o6wi6")]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 24.0
+offset_right = 464.0
+offset_bottom = 47.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Results" parent="." instance=ExtResource("7_emj6c")]
+visible = false
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="end_pause" from="pause" to="." method="_on_pause_end_pause"]
