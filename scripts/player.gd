@@ -10,7 +10,7 @@ func _process(delta:float)->void:
 	var direction = Input.get_axis("ui_up","ui_down")
 	velocity = direction*MainAutoload.player_max_speed
 	#Ограничение движения игрока
-	if (global_position.y+velocity*delta-size.y/2)>0 and (global_position.y+velocity*delta+size.y/2)<window.size.y:
+	if (global_position.y+velocity*delta-size.y/2)>130.0 and (global_position.y+velocity*delta+size.y/2)<window.size.y:
 		position.y+=velocity*delta
 	
 	if velocity==0:

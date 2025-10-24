@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://2memjss351st"]
+[gd_scene load_steps=3 format=3 uid="uid://2memjss351st"]
 
 [ext_resource type="Script" uid="uid://cxynw6ai1rbev" path="res://scripts/pause.gd" id="1_f1d2v"]
+[ext_resource type="Theme" uid="uid://blm255deewpdu" path="res://themes/buttons_theme.tres" id="2_r8yp4"]
 
 [node name="pause" type="Control"]
 process_mode = 3
@@ -23,22 +24,29 @@ offset_bottom = 712.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-text = "Resume"
+theme = ExtResource("2_r8yp4")
+theme_override_constants/align_to_largest_stylebox = 6
+text = "RESUME"
 
 [node name="BackToMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-text = "Back to menu"
+theme = ExtResource("2_r8yp4")
+theme_override_constants/align_to_largest_stylebox = 6
+text = "BACK TO MENU"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-text = "Exit"
+theme = ExtResource("2_r8yp4")
+theme_override_constants/align_to_largest_stylebox = 10
+text = "EXIT"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

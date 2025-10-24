@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8sxux6c2j3ia"]
+[gd_scene load_steps=3 format=3 uid="uid://c8sxux6c2j3ia"]
 
 [ext_resource type="Script" uid="uid://cwbij3unhlgvy" path="res://scripts/results.gd" id="1_amp1b"]
+[ext_resource type="Theme" uid="uid://blm255deewpdu" path="res://themes/buttons_theme.tres" id="2_21kdr"]
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -23,14 +24,17 @@ offset_left = 288.0
 offset_top = 136.0
 offset_right = 1148.0
 offset_bottom = 620.0
+theme = ExtResource("2_21kdr")
 
 [node name="BackToMenu" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 684.0
-offset_top = 668.0
-offset_right = 799.0
-offset_bottom = 699.0
-text = "Back to menu"
+offset_left = 616.0
+offset_top = 664.0
+offset_right = 841.0
+offset_bottom = 702.0
+theme = ExtResource("2_21kdr")
+theme_override_constants/align_to_largest_stylebox = 12
+text = "BACK TO MENU"
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

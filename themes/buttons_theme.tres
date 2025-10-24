@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://blm255deewpdu"]
+
+[ext_resource type="FontFile" uid="uid://bpc57ynjymldc" path="res://fonts/pixel_font.woff" id="1_is68n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4pkb"]
+bg_color = Color(0.873298, 0.873298, 0.873298, 1)
+shadow_color = Color(0, 0, 0, 0.862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg2yc"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0.14811, 0.127398, 1)
+shadow_color = Color(0, 0, 0, 0.870588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dtbn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_is68n"]
+bg_color = Color(0.71, 0.71, 0.71, 1)
+
+[resource]
+default_font = ExtResource("1_is68n")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 29
+Button/fonts/font = ExtResource("1_is68n")
+Button/styles/hover = SubResource("StyleBoxFlat_n4pkb")
+Button/styles/normal = SubResource("StyleBoxFlat_cg2yc")
+Button/styles/pressed = SubResource("StyleBoxFlat_8dtbn")
+Tree/colors/font_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+Tree/font_sizes/font_size = 32
+Tree/font_sizes/title_button_font_size = 32
+Tree/styles/panel = SubResource("StyleBoxFlat_is68n")

@@ -10,7 +10,7 @@ func seek_target(delta,target)->void:
 	var direction = target.y-global_position.y
 	direction=direction/maxdistance
 	velocity = direction*MainAutoload.opponent_max_speed
-	if  (global_position.y+velocity*delta-size.y/2)>0 and (global_position.y+velocity*delta+size.y/2)<window.size.y:
+	if  (global_position.y+velocity*delta-size.y/2)>130.0 and (global_position.y+velocity*delta+size.y/2)<window.size.y:
 		position.y+=velocity*delta
 	
 	if abs(velocity)<10:

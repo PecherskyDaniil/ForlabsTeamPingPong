@@ -40,7 +40,7 @@ func _process(delta: float):
 		left_win.emit()
 	if global_position.y > (window.size.y - size):
 		velocity.y *=-1
-	if global_position.y < size:
+	if global_position.y < size + 130.0:
 		velocity.y *=-1
 	#Попадание в ворота бота
 	if global_position.x < size:
