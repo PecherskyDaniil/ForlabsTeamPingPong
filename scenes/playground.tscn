@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://crgkqrudc358o"]
+[gd_scene load_steps=7 format=3 uid="uid://crgkqrudc358o"]
 
-[ext_resource type="Texture2D" uid="uid://u2xox70adk6p" path="res://assets/interface/main_menu_background.png" id="1_hddm4"]
 [ext_resource type="Script" uid="uid://m5j442vsx0wn" path="res://scripts/playground.gd" id="1_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://cx3q3gg3eqrw3" path="res://scenes/ball.tscn" id="2_kddj0"]
 [ext_resource type="PackedScene" uid="uid://chsviinyt5gaj" path="res://scenes/player.tscn" id="3_q8s1k"]
@@ -14,16 +13,17 @@ script = ExtResource("1_q8s1k")
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
 position = Vector2(720, 452)
 scale = Vector2(1.8, 1.61428)
-texture = ExtResource("1_hddm4")
 
 [node name="Ball" parent="." instance=ExtResource("2_kddj0")]
 position = Vector2(720, 450)
+scale = Vector2(17, 17)
 
 [node name="Player" parent="." instance=ExtResource("3_q8s1k")]
 position = Vector2(128, 456)
 
 [node name="Oponent" parent="." instance=ExtResource("5_mm0a5")]
 position = Vector2(1312, 448)
+scale = Vector2(1.2, 1.2)
 
 [node name="PlayerPoints" type="Label" parent="."]
 offset_left = 696.0

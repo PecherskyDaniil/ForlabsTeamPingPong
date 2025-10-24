@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://civvptuunex5f"]
 
 [ext_resource type="Script" uid="uid://ckeoqky2irare" path="res://scripts/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://u2xox70adk6p" path="res://assets/interface/main_menu_background.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://d3an1u17ec23n" path="res://assets/interface/background.png" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://dsbnixeflcqyu" path="res://scenes/settings.tscn" id="3_bqqt6"]
 
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_ekxnf")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(720, 448)
-scale = Vector2(1.8, 1.6)
-texture = ExtResource("1_l6cm7")
+position = Vector2(720, 452)
+scale = Vector2(1.44869, 1.56338)
+texture = ExtResource("2_bqqt6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 488.0
@@ -35,6 +35,7 @@ layout_mode = 2
 text = "Exit"
 
 [node name="settings" parent="." instance=ExtResource("3_bqqt6")]
+visible = false
 offset_left = -24.0
 offset_top = 16.0
 offset_right = -24.0

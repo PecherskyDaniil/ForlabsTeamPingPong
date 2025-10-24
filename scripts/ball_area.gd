@@ -9,10 +9,13 @@ var rng = RandomNumberGenerator.new()
 @onready var oparea = get_parent().get_parent().get_node("Oponent/OponentArea")
 @onready var window = get_parent().get_window()
 @onready var size = get_node("CollisionBall").shape.radius
+@onready var ball_sprite=get_node("BallSprite")
+
 var last_winner:bool=false
 
 func _ready()-> void:
 	last_winner=rng.randi_range(0,1)==0
+	ball_sprite.texture=MainAutoload.ball_texture
 	round_start()
 
 #Состояние мяча в начале раунда
