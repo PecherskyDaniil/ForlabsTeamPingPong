@@ -15,3 +15,4 @@ func _on_close_button_pressed() -> void:
 
 func _on_h_slider_value_changed(value: float) -> void:
 	MainAutoload.difficulty=int(value)
+	MainAutoload.change_difficulty(MainAutoload.difficulty)

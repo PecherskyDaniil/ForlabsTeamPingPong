@@ -3,7 +3,7 @@ extends Control
 @onready var tree = get_node("Tree")
 func _ready()->void:
 	set_process(false)
-	update()
+	
 	
 func update():
 	MainAutoload.load_data()
@@ -16,7 +16,7 @@ func update():
 	columnitem.set_text(0,"Дата")
 	columnitem.set_text(1,"Сложность")
 	columnitem.set_text(2,"Очки")
-	for i in range(0,3):
+	for i in range(0,MainAutoload.resultsList.size()):
 		var row = MainAutoload.resultsList[i]
 		var item = tree.create_item()
 		item.set_text(0,row["date"])

@@ -20,8 +20,8 @@ func round_start()->void:
 	velocity=Vector2i(0,0)
 	global_position=Vector2(window.size.x/2,window.size.y/2)
 	await get_tree().create_timer(2).timeout
-	var rand_y=rng.randi_range(-100,100)
-	var rand_x=rng.randi_range(50,100)
+	var rand_y=rng.randi_range(-MainAutoload.ball_max_speed,MainAutoload.ball_max_speed)
+	var rand_x=rng.randi_range(MainAutoload.ball_max_speed/2,MainAutoload.ball_max_speed)
 	if last_winner:
 		rand_x*=-1
 	velocity = Vector2i(rand_x,rand_y)
@@ -50,4 +50,4 @@ func _on_area_entered(area:Area2D)->void:
 	if area==rocketarea or area==oparea:
 		angular_velocity = rng.randf_range(0.1,0.5)
 		velocity.x*=-1
-		velocity.y=rng.randi_range(-100,100)
+		velocity.y=rng.randi_range(-MainAutoload.ball_max_speed,MainAutoload.ball_max_speed)

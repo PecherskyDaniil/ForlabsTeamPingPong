@@ -5,6 +5,11 @@ signal end_pause
 
 func _ready() -> void:
 	set_process(false)
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Escape"):
+		_on_resume_button_pressed()
+		
 
 func _on_resume_button_pressed() -> void:
 	end_pause.emit()
