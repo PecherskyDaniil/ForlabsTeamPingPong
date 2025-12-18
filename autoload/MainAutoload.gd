@@ -17,21 +17,24 @@ var pull_req_ball_texture=load("res://assets/ball/preq-ball.png")
 var ball_texture=cat_ball_texture
 var oponent_idle="bos1_idle"
 var oponent_run="bos1_run"
-
+var theme_music="res://audio/PongOST.mp3"
 func change_difficulty(diff:int):
 	if diff<2:
+		theme_music="res://audio/PongOST.mp3"
 		ball_texture=cat_ball_texture
 		oponent_idle="bos1_idle"
 		oponent_run="bos1_run"
 		ball_max_speed=250
 		opponent_max_speed=40
 	elif diff==2:
+		theme_music="res://audio/bebra.mp3"
 		ball_texture=iszf_ball_texture
 		oponent_idle="bos2_idle"
 		oponent_run="bos2_run"
 		ball_max_speed=300
 		opponent_max_speed=50
 	else:
+		theme_music="res://audio/PongOST.mp3"
 		ball_texture=pull_req_ball_texture
 		oponent_idle="bos3_idle"
 		oponent_run="bos3_run"

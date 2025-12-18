@@ -10,7 +10,7 @@ var rng = RandomNumberGenerator.new()
 @onready var window = get_parent().get_window()
 @onready var size = get_node("CollisionBall").shape.radius
 @onready var ball_sprite=get_node("BallSprite")
-
+@onready var audio_player:AudioStreamPlayer=get_parent().get_node("AudioStreamPlayer")
 var last_winner:bool=false
 
 func _ready()-> void:
@@ -40,8 +40,10 @@ func _process(delta: float):
 		left_win.emit()
 	if global_position.y > (window.size.y - size):
 		velocity.y *=-1
+		audio_player.play(0.0)
 	if global_position.y < size + 130.0:
 		velocity.y *=-1
+		audio_player.play(0.0)
 	#Попадание в ворота бота
 	if global_position.x < size:
 		last_winner=false
@@ -51,6 +53,7 @@ func _process(delta: float):
 
 func _on_area_entered(area:Area2D)->void:
 	if area==rocketarea or area==oparea:
+		audio_player.play(0.0)
 		angular_velocity = rng.randf_range(0.1,0.5)
 		velocity.x*=-1
 		velocity.y=rng.randi_range(-MainAutoload.ball_max_speed,MainAutoload.ball_max_speed)

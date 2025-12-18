@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crgkqrudc358o"]
+[gd_scene load_steps=19 format=3 uid="uid://crgkqrudc358o"]
 
 [ext_resource type="Script" uid="uid://m5j442vsx0wn" path="res://scripts/playground.gd" id="1_q8s1k"]
 [ext_resource type="Texture2D" uid="uid://ccm1p8rtnow5v" path="res://assets/interface/background2.png" id="2_emj6c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8sxux6c2j3ia" path="res://scenes/results.tscn" id="7_emj6c"]
 [ext_resource type="Theme" uid="uid://blm255deewpdu" path="res://themes/buttons_theme.tres" id="7_x1amm"]
 [ext_resource type="Texture2D" uid="uid://7xb7ap2wddou" path="res://assets/interface/progress-bar.png" id="9_2q4k0"]
+[ext_resource type="AudioStream" uid="uid://p5d3ae47nc2h" path="res://audio/PongOST.mp3" id="11_2bfhc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2q4k0"]
 font = ExtResource("6_mrac1")
@@ -17,6 +18,98 @@ font_size = 30
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bfhc"]
 size = Vector2(1440, 120)
+
+[sub_resource type="Animation" id="Animation_2bfhc"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loserect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winrect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_osidk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loserect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winrect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rlvb3"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("winrect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.630504, 0.598664, 0.462745), Color(1, 0.631373, 0.6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k63md"]
+resource_name = "lose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loserect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.582091, 0.551821, 0.447059), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fn4oh"]
+_data = {
+&"RESET": SubResource("Animation_osidk"),
+&"idle": SubResource("Animation_2bfhc"),
+&"lose": SubResource("Animation_k63md"),
+&"win": SubResource("Animation_rlvb3")
+}
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_q8s1k")
@@ -30,6 +123,19 @@ modulate = Color(1, 1, 1, 0.752941)
 position = Vector2(720, 452)
 scale = Vector2(1, 1.00444)
 texture = ExtResource("2_emj6c")
+
+[node name="loserect" type="ColorRect" parent="."]
+offset_top = 120.0
+offset_right = 723.0
+offset_bottom = 904.0
+color = Color(1, 1, 1, 0)
+
+[node name="winrect" type="ColorRect" parent="."]
+offset_left = 722.0
+offset_top = 118.0
+offset_right = 1441.0
+offset_bottom = 905.0
+color = Color(1, 1, 1, 0)
 
 [node name="Ball" parent="." instance=ExtResource("2_kddj0")]
 position = Vector2(720, 450)
@@ -102,6 +208,18 @@ texture = ExtResource("9_2q4k0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(720, 60)
 shape = SubResource("RectangleShape2D_2bfhc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_2bfhc")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fn4oh")
+}
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="end_pause" from="pause" to="." method="_on_pause_end_pause"]

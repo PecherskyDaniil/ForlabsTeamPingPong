@@ -10,8 +10,12 @@ var time = MainAutoload.PLAYTIME
 @onready var pause_scene=$pause
 @onready var results_scene=get_node("Results")
 @onready var time_rect=get_node("TimeBarRect")
-
+@onready var audio_player:AudioStreamPlayer=get_node("AudioStreamPlayer")
+@onready var anim_player:AnimationPlayer=get_node("AnimationPlayer")
 func _ready():
+	audio_player.stream=load(MainAutoload.theme_music)
+	audio_player.play()
+	anim_player.play("idle")
 	$Timer.wait_time=MainAutoload.PLAYTIME
 	$Timer.start()
 	ball.left_win.connect(player_win)
@@ -35,10 +39,13 @@ func _process(delta:float)->void:
 		
 #Засчитать очко игроку
 func player_win():
+	anim_player.play("win")
 	player_points+=1
 	player_label.text="POINTS: " + str(player_points)
+	#audio_player.stream=
 #Засчитать очко боту
 func op_win():
+	anim_player.play("lose")
 	player_points-=1
 	player_label.text="POINTS: " + str(player_points)
 
