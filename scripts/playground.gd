@@ -9,7 +9,13 @@ var time = MainAutoload.PLAYTIME
 @onready var pause_button=get_node("PauseButton")
 @onready var pause_scene=$pause
 @onready var results_scene=get_node("Results")
+@onready var time_rect=get_node("TimeBarRect")
+@onready var audio_player:AudioStreamPlayer=get_node("AudioStreamPlayer")
+@onready var anim_player:AnimationPlayer=get_node("AnimationPlayer")
 func _ready():
+	audio_player.stream=load(MainAutoload.theme_music)
+	audio_player.play()
+	anim_player.play("idle")
 	$Timer.wait_time=MainAutoload.PLAYTIME
 	$Timer.start()
 	ball.left_win.connect(player_win)
@@ -22,6 +28,7 @@ func _process(delta:float)->void:
 		_on_pause_button_pressed()
 	oponent.seek_target(delta,ball.global_position)
 	$Label.set_text("Time left: "+str(int(round($Timer.get_time_left()))))
+	time_rect.size.x=583*($Timer.get_time_left()/MainAutoload.PLAYTIME)
 	if int(round($Timer.get_time_left()))<1:
 		MainAutoload.save_data(player_points)
 		print(MainAutoload.resultsList)
@@ -32,12 +39,15 @@ func _process(delta:float)->void:
 		
 #Засчитать очко игроку
 func player_win():
+	anim_player.play("win")
 	player_points+=1
-	player_label.text="Points: " + str(player_points)
+	player_label.text="POINTS: " + str(player_points)
+	#audio_player.stream=
 #Засчитать очко боту
 func op_win():
+	anim_player.play("lose")
 	player_points-=1
-	player_label.text="Points: " + str(player_points)
+	player_label.text="POINTS: " + str(player_points)
 
 func _on_pause_button_pressed() -> void:
 	pause_scene.visible=true
