@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8sxux6c2j3ia"]
+[gd_scene load_steps=4 format=3 uid="uid://c8sxux6c2j3ia"]
 
 [ext_resource type="Script" uid="uid://cwbij3unhlgvy" path="res://scripts/results.gd" id="1_amp1b"]
 [ext_resource type="Theme" uid="uid://blm255deewpdu" path="res://themes/buttons_theme.tres" id="2_21kdr"]
+[ext_resource type="Theme" uid="uid://coeca7wrbdbsf" path="res://themes/buttons_theme_result.tres" id="3_r4wmc"]
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -15,26 +16,38 @@ script = ExtResource("1_amp1b")
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0.188235, 0.188235, 0.188235, 0.529412)
 layout_mode = 0
-offset_right = 1448.0
-offset_bottom = 896.0
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 1176.0
+offset_bottom = 888.0
 
 [node name="Tree" type="Tree" parent="."]
 layout_mode = 0
-offset_left = 288.0
+offset_left = 264.0
 offset_top = 136.0
-offset_right = 1148.0
+offset_right = 1124.0
 offset_bottom = 620.0
 theme = ExtResource("2_21kdr")
 
 [node name="BackToMenu" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 616.0
-offset_top = 664.0
-offset_right = 841.0
-offset_bottom = 702.0
-theme = ExtResource("2_21kdr")
+offset_left = 576.0
+offset_top = 816.0
+offset_right = 855.0
+offset_bottom = 854.0
+theme = ExtResource("3_r4wmc")
 theme_override_constants/align_to_largest_stylebox = 12
 text = "BACK TO MENU"
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 32.0
+offset_right = 872.0
+offset_bottom = 104.0
+theme = ExtResource("2_21kdr")
+text = "SCORE"
 
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
