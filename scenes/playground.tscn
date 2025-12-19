@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3q3gg3eqrw3" path="res://scenes/ball.tscn" id="2_kddj0"]
 [ext_resource type="PackedScene" uid="uid://chsviinyt5gaj" path="res://scenes/player.tscn" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://o7p8m5lhxhmm" path="res://scenes/oponent.tscn" id="5_mm0a5"]
-[ext_resource type="FontFile" uid="uid://dgkngoda46t5n" path="res://fonts/pixel_font.ttf" id="6_mrac1"]
+[ext_resource type="FontFile" uid="uid://dlmc85n337y5w" path="res://fonts/pixel.ttf" id="6_2bfhc"]
 [ext_resource type="PackedScene" uid="uid://2memjss351st" path="res://scenes/pause.tscn" id="6_o6wi6"]
 [ext_resource type="PackedScene" uid="uid://c8sxux6c2j3ia" path="res://scenes/results.tscn" id="7_emj6c"]
 [ext_resource type="Theme" uid="uid://blm255deewpdu" path="res://themes/buttons_theme.tres" id="7_x1amm"]
@@ -13,38 +13,11 @@
 [ext_resource type="AudioStream" uid="uid://p5d3ae47nc2h" path="res://audio/PongOST.mp3" id="11_2bfhc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2q4k0"]
-font = ExtResource("6_mrac1")
+font = ExtResource("6_2bfhc")
 font_size = 30
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bfhc"]
 size = Vector2(1440, 120)
-
-[sub_resource type="Animation" id="Animation_2bfhc"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("loserect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("winrect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_osidk"]
 length = 0.001
@@ -73,19 +46,31 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_rlvb3"]
-resource_name = "win"
+[sub_resource type="Animation" id="Animation_2bfhc"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("winrect:color")
+tracks/0/path = NodePath("loserect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 0.630504, 0.598664, 0.462745), Color(1, 0.631373, 0.6, 0)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winrect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_k63md"]
@@ -101,6 +86,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 0.582091, 0.551821, 0.447059), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rlvb3"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("winrect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.630504, 0.598664, 0.462745), Color(1, 0.631373, 0.6, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fn4oh"]
